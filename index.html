@@ -1,0 +1,96 @@
+﻿<!doctype html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GASTRO dokumentu parakstīšanas demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div id="noticeHost" class="notice-host" aria-live="polite" aria-atomic="true"></div>
+
+  <main class="app-shell">
+    <section class="left-panel card">
+      <div>
+        <div class="top-row">
+          <img src="gastrocentrs-logo.svg" alt="GASTRO" class="brand-logo" />
+          <div class="lang-switch" role="group" aria-label="Language selector">
+            <button id="langLvBtn" type="button" class="lang-btn active">LV</button>
+            <button id="langEnBtn" type="button" class="lang-btn">EN</button>
+          </div>
+        </div>
+        <p class="eyebrow" data-i18n="ui.clientDemo">Klienta demo</p>
+      </div>
+
+      <ol class="stepper" id="stepper"></ol>
+
+      <div id="stepContent" class="step-content"></div>
+      <p id="statusMessage" class="status-message" aria-live="polite"></p>
+
+      <div class="footer-note">
+        <strong data-i18n="ui.demoModeLabel">Demo režīms:</strong>
+        <span data-i18n="ui.demoModeBody">Ārsta kvalificētā parakstīšana ir simulēta (Smart-ID stila apstiprinājums un audita zīmogs).</span>
+      </div>
+    </section>
+
+    <section class="viewer-panel card">
+      <div class="viewer-header">
+        <div>
+          <p class="eyebrow" data-i18n="ui.documentView">Dokumenta skats</p>
+          <h2 id="docTitle">-</h2>
+        </div>
+        <button class="ghost-btn" id="downloadCurrentBtn" type="button" data-i18n="ui.downloadCurrentPdf">Lejupielādēt pašreizējo PDF</button>
+      </div>
+      <div id="placementHint" class="placement-hint" hidden>
+        <div>
+          <strong data-i18n="ui.placeSignatureLabel">Novietot parakstu:</strong>
+          <span data-i18n="ui.placeSignatureHelp">pārvietojiet kursoru dokumentā un klikšķiniet vietā, kur jāparādās parakstam.</span>
+        </div>
+        <div class="placement-actions">
+          <button type="button" id="placementDefaultBtn" class="ghost-btn" data-i18n="ui.useDefaultLine">Lietot noklusējuma līniju</button>
+          <button type="button" id="placementCancelBtn" class="ghost-btn" data-i18n="ui.cancel">Atcelt</button>
+        </div>
+      </div>
+      <div id="pdfContainer" class="pdf-container"></div>
+    </section>
+  </main>
+  <footer class="app-footer">
+    <p id="footerCopy"></p>
+  </footer>
+
+  <dialog id="signatureModal" class="dialog">
+    <form method="dialog" class="dialog-card">
+      <h3 data-i18n="ui.addVisualSignature">Pievienot vizuālo parakstu</h3>
+      <p data-i18n="ui.drawAndConfirmSignature">Uzzīmējiet parakstu un apstipriniet, lai ievietotu to izvēlētajā paraksta laukā.</p>
+      <canvas id="signatureCanvas" width="540" height="220"></canvas>
+      <div class="dialog-actions">
+        <button type="button" id="clearSignatureBtn" class="ghost-btn" data-i18n="ui.clear">Notīrīt</button>
+        <button type="button" id="cancelSignatureBtn" class="ghost-btn" data-i18n="ui.cancel">Atcelt</button>
+        <button type="button" id="saveSignatureBtn" class="primary-btn" data-i18n="ui.useSignature">Lietot parakstu</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="smartIdModal" class="dialog">
+    <form method="dialog" class="dialog-card smartid-card">
+      <h3 data-i18n="ui.smartIdQualifiedSigning">Smart-ID kvalificēta parakstīšana</h3>
+      <p data-i18n="ui.approveWithCode">Apstipriniet parakstīšanu Smart-ID lietotnē, izmantojot kodu:</p>
+      <p id="challengeCode" class="challenge">0000</p>
+      <p class="tiny" data-i18n="ui.simulationOnly">Simulācija tikai demonstrācijas vajadzībām.</p>
+      <div class="dialog-actions">
+        <button type="button" id="cancelSmartIdBtn" class="ghost-btn" data-i18n="ui.cancel">Atcelt</button>
+        <button type="button" id="approveSmartIdBtn" class="primary-btn" data-i18n="ui.approveSigning">Apstiprināt parakstīšanu</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad@5.0.4/dist/signature_pad.umd.min.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
