@@ -227,7 +227,7 @@ const fieldDefs = {
     { id: "consentNumber", label: "Piekrišanas numurs", type: "text", page: 1, x: 434, y: 80, w: 118, h: 16, fontSize: 12, required: true },
     { id: "patientName", label: "Pacienta vārds, uzvārds", type: "text", page: 1, x: 99, y: 149, w: 62, h: 16, fontSize: 12, required: true },
     { id: "patientCode", label: "Pacienta personas kods", type: "text", page: 1, x: 247, y: 149, w: 84, h: 16, fontSize: 12, required: true },
-    { id: "patientSignatureDoc1", label: "Pacienta paraksts", type: "signature", page: 1, x: 144, y: 540, w: 178, h: 28, required: true }
+    { id: "patientSignatureDoc1", label: "Pacienta paraksts", type: "signature", page: 1, x: 144, y: 510, w: 178, h: 28, required: true }
   ],
   doc2: [
     { id: "patientNameDoc2", label: "Pacienta vārds, uzvārds", type: "text", page: 1, x: 178, y: 108, w: 68, h: 18, fontSize: 12, required: true },
